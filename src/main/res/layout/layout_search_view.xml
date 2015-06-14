@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:gravity="center"
+    android:padding="@dimen/distance_5dp">
+
+    <RelativeLayout
+        android:id="@+id/rl_search_view_content"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_toLeftOf="@+id/iv_search_view_search"
+        android:layout_marginRight="@dimen/distance_5dp"
+        android:background="@drawable/bg_rect_round_corner"
+        android:padding="@dimen/distance_5dp">
+
+        <EditText
+            android:id="@+id/et_search_view_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@+id/iv_search_view_clear"
+            android:layout_marginLeft="@dimen/distance_5dp"
+            android:layout_centerVertical="true"
+            android:hint="输入歌曲/歌手/专辑搜索"
+            android:background="@null"/>
+
+        <ImageView
+            android:id="@+id/iv_search_view_clear"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/distance_5dp"
+            android:src="@drawable/delete_icon_mm"
+            android:visibility="invisible"/>
+
+        </RelativeLayout>
+
+    <ImageView
+        android:id="@+id/iv_search_view_search"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:src="@drawable/search_icon_mm"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_weight="1"/>
+
+</RelativeLayout>

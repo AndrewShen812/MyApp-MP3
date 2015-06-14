@@ -1,0 +1,104 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.na517.lf.mp3player.SongDetailActivity">
+
+    <ImageView
+        android:id="@+id/iv_song_detail"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_launcher"
+        android:layout_centerHorizontal="true"
+        android:scaleType="centerCrop"/>
+
+    <LinearLayout
+        android:id="@+id/ll_song_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/iv_song_detail"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_song_detail_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="歌名"/>
+        <TextView
+            android:id="@+id/tv_song_detail_singer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="歌手"/>
+        <TextView
+            android:id="@+id/tv_song_detail_album"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="专辑"/>
+
+        <TextView
+            android:id="@+id/tv_song_detail_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="时长"/>
+
+        <TextView
+            android:id="@+id/tv_song_detail_format"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="格式"/>
+
+        <TextView
+            android:id="@+id/tv_song_detail_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="大小"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_song_detail_btns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_song_detail"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_song_detail_try"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="试听"/>
+
+        <Button
+            android:id="@+id/btn_song_detail_download"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="下载"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_song_detail_progress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_song_detail_btns"
+        android:layout_marginTop="@dimen/distance_10dp"
+        android:orientation="horizontal">
+
+        <ProgressBar
+            android:id="@+id/pb_song_detail_download_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            style="?android:progressBarStyleHorizontal"/>
+
+        <TextView
+            android:id="@+id/tv_song_detail_download_progress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="已下载0%"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
