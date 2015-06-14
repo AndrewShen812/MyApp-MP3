@@ -58,6 +58,8 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
         mContext = this;
 
         initView();
+        
+        Log.i("LF", "add from web.");
     }
 
     private void initView() {
