@@ -69,6 +69,8 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
 
         initView();
         initData();
+        
+        Log.e("LF", "add from co");
     }
 
     @Override
