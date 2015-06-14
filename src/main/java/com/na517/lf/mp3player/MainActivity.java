@@ -58,6 +58,8 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
         mContext = this;
 
         initView();
+        
+        Log.e("LF", "add from co");
     }
 
     private void initView() {
