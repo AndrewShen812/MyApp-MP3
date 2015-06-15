@@ -90,7 +90,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"/>
+            style="?android:progressBarStyleHorizontal"/>
 
         <TextView
             android:id="@+id/tv_song_detail_download_progress"
