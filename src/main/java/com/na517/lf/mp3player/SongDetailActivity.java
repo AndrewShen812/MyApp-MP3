@@ -2,7 +2,6 @@ package com.na517.lf.mp3player;
 
 import android.app.Activity;
 import android.content.Context;
-
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
@@ -103,6 +102,9 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
     @Override
     public void onClick(View v) {
         switch(v.getId()) {
+            /**
+             * 试听
+             */
             case R.id.btn_song_detail_try:
                 mTvDownload.setVisibility(View.VISIBLE);
                 ArrayList<Audio> audios = (ArrayList<Audio>) AudioUtils.getAudioList(mContext);
@@ -122,6 +124,9 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
                     mBtnTry.setText("暂停");
                 }
                 break;
+            /**
+             * 下载
+             */
             case R.id.btn_song_detail_download:
                 mTvDownload.setVisibility(View.VISIBLE);
                 mBtnDownload.setEnabled(false);
@@ -151,6 +156,9 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
         }
     }
 
+    /**
+     * 初始化页面显示数据
+     */
     private void initData() {
         mSong = (BDSongDetail) getIntent().getSerializableExtra("SongDetail");
         if (null != mSong) {
@@ -173,6 +181,11 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
         }
     }
 
+    /**
+     * 格式化播放时间
+     * @param totalSec 总时间秒数
+     * @return 格式：hh:MM:ss 或 MM:ss
+     */
     private String getFormatTime(int totalSec) {
         int hour = totalSec / 3600;
         int min = (totalSec % 3600) / 60;
@@ -188,6 +201,11 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
         return time;
     }
 
+    /**
+     * 格式化显示的文件大小
+     * @param byteSize 总字节数
+     * @return
+     */
     private String getFormatSize(long byteSize) {
         String size = "";
         if(byteSize < 1024) { // 小于1KB
@@ -203,6 +221,12 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
         return size;
     }
 
+    /**
+     * 保留小数点后2位
+     * @param byteSize
+     * @param unit
+     * @return
+     */
     private double getDouble(long byteSize, long unit) {
         BigDecimal bigSize = new BigDecimal(byteSize + "");
         BigDecimal bigUnit = new BigDecimal(unit + "");
@@ -210,6 +234,10 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
         return bigSize.divide(bigUnit, 2, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
+    /**
+     * 获取下载内容的大小
+     * @param strUrl
+     */
     private void getDownloadSize(final String strUrl) {
         Thread thread = new Thread(new Runnable() {
             @Override

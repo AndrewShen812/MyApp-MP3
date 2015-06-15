@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * 项目名称：LianfengApp
- * 类描述：BDSongDetail
+ * 类描述：BDSongDetail 百度音乐新接口歌曲详细信息
  * 创建人：lianfeng
  * 创建时间：2015/6/5 13:46
  * 修改人：lianfeng

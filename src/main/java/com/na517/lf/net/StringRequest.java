@@ -9,7 +9,7 @@ import java.io.IOException;
 
 /**
  * 项目名称：LianfengApp
- * 类描述：StringRequest
+ * 类描述：StringRequest 网络请求调用工具
  * 创建人：lianfeng
  * 创建时间：2015/6/3 17:19
  * 修改人：lianfeng

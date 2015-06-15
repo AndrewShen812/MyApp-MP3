@@ -13,12 +13,11 @@ public class FileUtils {
     private String SDPath;
 
     public FileUtils(){
-        //µÃµ½µ±Ç°Íâ²¿´æ´¢Éè±¸µÄÄ¿Â¼
         SDPath=Environment.getExternalStorageDirectory().getAbsolutePath()+"/";
     }
 
     /**
-     * ÔÚSD¿¨ÉÏ´´½¨ÎÄ¼ş
+     * åœ¨SDå¡ä¸Šåˆ›å»ºæ–‡ä»¶
      * @param fileName
      * @return
      */
@@ -33,7 +32,7 @@ public class FileUtils {
     }
 
     /**
-     * ÔÚSD¿¨ÉÏ´´½¨Ä¿Â¼
+     * åœ¨SDå¡ä¸Šåˆ›å»ºç›®å½•
      * @param dirName
      * @return
      */
@@ -44,7 +43,7 @@ public class FileUtils {
     }
 
     /**
-     * ÅĞ¶ÏSD¿¨ÉÏÎÄ¼şÊÇ·ñ´æÔÚ
+     * åˆ¤æ–­SDå¡ä¸Šæ˜¯å¦å­˜åœ¨æ–‡ä»¶
      * @param fileName
      * @return
      */
@@ -53,7 +52,7 @@ public class FileUtils {
         return file.exists();
     }
     /**
-     * ½«Ò»¸öinputStreamÀïÃæµÄÊı¾İĞ´µ½SD¿¨ÖĞ
+     * å°†inputStreamæ•°æ®æµå†™å…¥æ–‡ä»¶
      * @param path
      * @param fileName
      * @param inputStream

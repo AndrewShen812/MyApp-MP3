@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * 项目名称：LianfengApp
- * 类描述：BDMusicData
+ * 类描述：BDMusicData 百度音乐接口返回数据中的歌曲信息
  * 创建人：lianfeng
  * 创建时间：2015/6/3 18:24
  * 修改人：lianfeng

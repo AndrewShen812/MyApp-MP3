@@ -5,7 +5,7 @@ import android.provider.MediaStore;
 
 /**
  * 项目名称：LianfengApp
- * 类描述：Audio
+ * 类描述：Audio 一个音频文件的描述信息
  * 创建人：lianfeng
  * 创建时间：2015/6/11 15:05
  * 修改人：lianfeng

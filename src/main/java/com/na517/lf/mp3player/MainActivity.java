@@ -24,8 +24,6 @@ import com.na517.lf.view.SearchView;
 
 import java.util.ArrayList;
 
-
-
 public class MainActivity extends Activity implements SearchView.OnStartSearchListener, AdapterView.OnItemClickListener {
 
     private Context mContext;

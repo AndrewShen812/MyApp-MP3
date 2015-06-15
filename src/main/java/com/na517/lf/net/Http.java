@@ -17,7 +17,7 @@ import java.net.URL;
 
 /**
  * 项目名称：LianfengApp
- * 类描述：Http请求操作
+ * 类描述：Http get和post请求操作
  * 创建人：lianfeng
  * 创建时间：2015/6/3 17:22
  * 修改人：lianfeng

@@ -7,6 +7,8 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.na517.lf.model.DownloadReport;
+
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -17,7 +19,7 @@ import java.net.URL;
 
 /**
  * 项目名称：LianfengApp
- * 类描述：DownloadTask
+ * 类描述：DownloadTask 处理下载的异步任务
  * 创建人：lianfeng
  * 创建时间：2015/6/10 16:15
  * 修改人：lianfeng
@@ -82,7 +84,7 @@ public class DownloadTask extends AsyncTask<Object, Integer, DownloadReport> {
             mSize = getDownloadSize(mUrl);
             mFile = downloadUtils.getFile(mFileName);
             if (!downloadUtils.isNewCreate) {
-                report.code = DownloadReport.CODE_FILE_EXISTS;
+                report.code = DownloadReport.CODE_EXIST;
                 report.error = "文件已存在";
                 return report;
             }
