@@ -7,8 +7,6 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.na517.lf.model.DownloadReport;
-
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
@@ -66,13 +64,13 @@ public class DownloadTask extends AsyncTask<Object, Integer, DownloadReport> {
     }
 
     @Override
-    protected void onPreExecute() {
+     protected void onPreExecute() {
         super.onPreExecute();
     }
 
     @Override
     protected DownloadReport doInBackground(Object... params) {
-        DownloadReport result = new DownloadReport();
+        DownloadReport report = new DownloadReport();
         try {
             URL url = new URL(mUrl);
             HttpURLConnection httpUrlCon = (HttpURLConnection) url.openConnection();
@@ -83,12 +81,11 @@ public class DownloadTask extends AsyncTask<Object, Integer, DownloadReport> {
 
             mSize = getDownloadSize(mUrl);
             mFile = downloadUtils.getFile(mFileName);
-            if (downloadUtils.ismFileExist()) {
-                result.code = DownloadReport.CODE_EXIST;
-                result.error = "文件已存在";
-                return result;
+            if (!downloadUtils.isNewCreate) {
+                report.code = DownloadReport.CODE_FILE_EXISTS;
+                report.error = "文件已存在";
+                return report;
             }
-
             InputStream inputStream = httpUrlCon.getInputStream();
             RandomAccessFile accessFile = new RandomAccessFile(mFile, "rw");
             accessFile.seek(0);
@@ -96,6 +93,7 @@ public class DownloadTask extends AsyncTask<Object, Integer, DownloadReport> {
             byte[] buffer = new byte[1024 * 100];
             int curSize = 0;
             int readSize = 0;
+            Log.i("LF", "mSize = " + mSize);
             while (!mIsFinished) {
                 Thread.sleep(500);
                 readSize = inputStream.read(buffer);
@@ -114,22 +112,22 @@ public class DownloadTask extends AsyncTask<Object, Integer, DownloadReport> {
             accessFile.close();
             httpUrlCon.disconnect();
 
-            result.code = DownloadReport.CODE_SUCCESS;
+            report.code = DownloadReport.CODE_SUCCESS;
         } catch (MalformedURLException e) {
             e.printStackTrace();
-            result.code = DownloadReport.CODE_ERR;
-            result.error = "MalformedURLException:" + e.getMessage();
+            report.code = DownloadReport.CODE_ERR;
+            report.error = "MalformedURLException:" + e.getMessage();
         } catch (IOException e) {
             e.printStackTrace();
-            result.code = DownloadReport.CODE_ERR;
-            result.error = "IOException:" + e.getMessage();
+            report.code = DownloadReport.CODE_ERR;
+            report.error = "IOException:" + e.getMessage();
         } catch (InterruptedException e) {
             e.printStackTrace();
-            result.code = DownloadReport.CODE_ERR;
-            result.error = "InterruptedException:" + e.getMessage();
+            report.code = DownloadReport.CODE_ERR;
+            report.error = "InterruptedException:" + e.getMessage();
         }
 
-        return result;
+        return report;
     }
 
     @Override

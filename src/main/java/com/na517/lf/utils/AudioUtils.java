@@ -36,7 +36,13 @@ public class AudioUtils implements MediaPlayer.OnBufferingUpdateListener, MediaP
 
     private TextView mTvDownload;
 
+<<<<<<< HEAD
     private Thread mPlayThread;
+=======
+    private PlayLocalThread mLocalThread;
+
+    private PlayOnlineThread mOnlineThread;
+>>>>>>> e409e1984144dc91ba2c0604cfcd7aabef6ad481
 
     public static final String[] AUDIO_KEYS = new String[]{
             MediaStore.Audio.Media._ID,
@@ -131,6 +137,25 @@ public class AudioUtils implements MediaPlayer.OnBufferingUpdateListener, MediaP
         return audioList;
     }
 
+<<<<<<< HEAD
+=======
+    public void playLocalAudio(final String path) {
+        Log.i("LF", "play path:" + path);
+        mLocalThread = new PlayLocalThread(path);
+        mLocalThread.start();
+    }
+
+    /**
+     * 在线播放音乐
+     * @param url
+     */
+    public void playAudioOnline(final String url) {
+        Log.i("LF", "play url:" + url);
+        mOnlineThread = new PlayOnlineThread(url);
+        mOnlineThread.start();
+    }
+
+>>>>>>> e409e1984144dc91ba2c0604cfcd7aabef6ad481
     /**
      * 缓冲更新
      * @param mp
@@ -144,6 +169,15 @@ public class AudioUtils implements MediaPlayer.OnBufferingUpdateListener, MediaP
             mPbDownload.setProgress(currentProgress);
             mTvDownload.setText(percent + "%");
         }
+<<<<<<< HEAD
+=======
+        if (null == mPbDownload) {
+            Log.i("LF", "mPbDownload is null");
+        }
+        if (null == mTvDownload) {
+            Log.i("LF", "mTvDownload is null");
+        }
+>>>>>>> e409e1984144dc91ba2c0604cfcd7aabef6ad481
     }
 
     /**
@@ -155,6 +189,7 @@ public class AudioUtils implements MediaPlayer.OnBufferingUpdateListener, MediaP
 
     }
 
+<<<<<<< HEAD
     /**
      * 播放本地音乐
      * @param url 音乐链接
@@ -191,10 +226,23 @@ public class AudioUtils implements MediaPlayer.OnBufferingUpdateListener, MediaP
 
     public void stop() {
         if (null != mMediaPlayer && mMediaPlayer.isPlaying()) {
+=======
+    public void pause() {
+
+    }
+
+    public void play() {
+
+    }
+
+    public void stop() {
+        if (mMediaPlayer.isPlaying()) {
+>>>>>>> e409e1984144dc91ba2c0604cfcd7aabef6ad481
             mMediaPlayer.stop();
             mMediaPlayer.release();
             mMediaPlayer = null;
         }
+<<<<<<< HEAD
         if (null != mPlayThread && mPlayThread.isAlive()) {
             mPlayThread.interrupt();
             mPlayThread = null;
@@ -218,10 +266,28 @@ public class AudioUtils implements MediaPlayer.OnBufferingUpdateListener, MediaP
         private PlayRunable(String url, boolean isOnline) {
             mUrl = url;
             this.isOnline = isOnline;
+=======
+        if (mLocalThread != null && mLocalThread.isAlive()) {
+            mLocalThread.interrupt();
+            mLocalThread = null;
+        }
+        if (mOnlineThread != null && mOnlineThread.isAlive()) {
+            mOnlineThread.interrupt();
+            mOnlineThread = null;
+        }
+    }
+
+    private class PlayOnlineThread extends Thread {
+        private String mUrl;
+
+        public PlayOnlineThread(String url) {
+            mUrl = url;
+>>>>>>> e409e1984144dc91ba2c0604cfcd7aabef6ad481
         }
 
         @Override
         public void run() {
+<<<<<<< HEAD
             if (isOnline) {
                 try {
                     mMediaPlayer.reset();
@@ -249,4 +315,40 @@ public class AudioUtils implements MediaPlayer.OnBufferingUpdateListener, MediaP
             Log.e("LF", "start");
         }
     }
+=======
+            try {
+                mMediaPlayer.reset();
+                mMediaPlayer.setDataSource(mUrl); // 设置数据源
+                mMediaPlayer.prepare();
+                mMediaPlayer.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("LF", "Play online Exception:" + e.getMessage());
+            }
+        }
+    }
+
+    private class PlayLocalThread extends Thread {
+        private String mUrl;
+
+        public PlayLocalThread(String mUrl) {
+            this.mUrl = mUrl;
+        }
+
+        @Override
+        public void run() {
+            try {
+                mMediaPlayer = new MediaPlayer();
+                mMediaPlayer.reset();
+                mMediaPlayer.setDataSource(mUrl); // 设置数据源
+                mMediaPlayer.prepare();
+                mMediaPlayer.start();
+            } catch (Exception e) {
+                e.printStackTrace();
+                Log.e("LF", "Play local Exception:" + e.getMessage());
+            }
+        }
+    }
+
+>>>>>>> e409e1984144dc91ba2c0604cfcd7aabef6ad481
 }

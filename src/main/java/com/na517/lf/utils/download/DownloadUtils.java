@@ -2,6 +2,7 @@ package com.na517.lf.utils.download;
 
 import android.content.Context;
 import android.os.Environment;
+import android.util.Log;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,9 +23,12 @@ public class DownloadUtils {
 
     private String mUrl;
 
-    public static final String CACHE_ROOT = "/MyMP3_test/";
-
     private boolean mFileExist;
+    private static final String TAG = "DownloadUtils";
+
+    public static final String CACHE_ROOT = "/MyMP3/";
+
+    public boolean isNewCreate = false;
 
     public DownloadUtils(Context context, String url) {
         mContext = context;
@@ -37,12 +41,14 @@ public class DownloadUtils {
         // 判断是否有SDCard，并具有读写的权限
         if (Environment.MEDIA_MOUNTED.equals(Environment.getExternalStorageState())) {
             savefile = new File(Environment.getExternalStorageDirectory(),  "/" + CACHE_ROOT + fileName);
+
             if (!savefile.getParentFile().exists()) {
                 savefile.getParentFile().mkdirs();
             }
             if (!savefile.exists()) {
                 savefile.createNewFile();
                 mFileExist = false;
+                isNewCreate = true;
             }
         }
         else {
@@ -53,6 +59,7 @@ public class DownloadUtils {
             if (!savefile.exists()) {
                 savefile.createNewFile();
                 mFileExist = false;
+                isNewCreate = true;
             }
         }
 

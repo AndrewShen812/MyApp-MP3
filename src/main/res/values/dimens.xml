@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <dimen name="font_size_10sp">10sp</dimen>
     <dimen name="font_size_12sp">12sp</dimen>
     <dimen name="font_size_13sp">13sp</dimen>
@@ -9,6 +8,7 @@
     <dimen name="font_size_18sp">18sp</dimen>
     <dimen name="font_size_20sp">20sp</dimen>
     <dimen name="font_size_25sp">25sp</dimen>
+    
     <dimen name="distance_1dp">1dp</dimen>
     <dimen name="distance_2dp">2dp</dimen>
     <dimen name="distance_5dp">5dp</dimen>
@@ -17,6 +17,7 @@
     <dimen name="distance_20dp">20dp</dimen>
     <dimen name="distance_25dp">25dp</dimen>
     <dimen name="distance_30dp">30dp</dimen>
+    
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 

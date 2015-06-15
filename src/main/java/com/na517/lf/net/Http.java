@@ -34,6 +34,8 @@ public class Http {
      * @throws IOException
      */
     public static String Get(String strUrl) throws IOException {
+
+        /*
         String result = "";
         // 创建HttpClient实例
         HttpClient httpclient = new DefaultHttpClient();
@@ -48,8 +50,9 @@ public class Http {
         }
 
         return result;
+        */
 
-        /*String result = "";
+        String result = "";
         HttpGet httpRequest = new HttpGet(strUrl);// 建立http get联机
         HttpResponse httpResponse = new DefaultHttpClient().execute(httpRequest);// 发出http请求
         int statusCode = httpResponse.getStatusLine().getStatusCode();
@@ -57,7 +60,7 @@ public class Http {
             result = EntityUtils.toString(httpResponse.getEntity());// 获取相应的字符串
         }
 
-        return result;*/
+        return result;
 
         /*
         String result = "";

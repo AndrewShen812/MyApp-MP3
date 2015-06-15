@@ -2,13 +2,10 @@ package com.na517.lf.mp3player;
 
 import android.app.Activity;
 import android.content.Context;
-import android.media.AudioManager;
+
 import android.media.MediaPlayer;
-import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -72,6 +69,8 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
 
         initView();
         initData();
+        
+        Log.e("LF", "add from co");
     }
 
     @Override
@@ -81,6 +80,7 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
         if (null != mAudioUtils) {
             mAudioUtils.stop();
         }
+        mAudioUtils.stop();
     }
 
     private void initView() {
@@ -121,7 +121,6 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
                     mAudioUtils.play();
                     mBtnTry.setText("暂停");
                 }
-
                 break;
             case R.id.btn_song_detail_download:
                 mTvDownload.setVisibility(View.VISIBLE);
@@ -137,6 +136,7 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
                         Toast.makeText(mContext, "下载失败：" + report.error, Toast.LENGTH_SHORT).show();
                         mBtnDownload.setEnabled(true);
                     }
+
                     @Override
                     public void onDownloadSuccess() {
                         Log.i("LF", "call onDownloadSuccess");

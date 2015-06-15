@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
+
 import com.na517.lf.model.BDSong;
 import com.na517.lf.model.BDSongDetail;
 import com.na517.lf.net.ResponseCallback;
@@ -24,7 +25,8 @@ import com.na517.lf.view.SearchView;
 import java.util.ArrayList;
 
 
-public class MainActivity extends Activity implements AdapterView.OnItemClickListener, SearchView.OnStartSearchListener {
+
+public class MainActivity extends Activity implements SearchView.OnStartSearchListener, AdapterView.OnItemClickListener {
 
     private Context mContext;
 
@@ -46,6 +48,8 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
         mContext = this;
 
         initView();
+
+        Log.e("LF", "add from co. 2015年6月15日08:29:56");
     }
 
     private void initView() {
@@ -55,9 +59,6 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
         mSvSearch.setOnStartSearchListener(this);
         mLvResult.setOnItemClickListener(this);
-
-        String str = null;
-        str.isEmpty();
     }
 
     private void searchSongs(String content) {
@@ -161,12 +162,12 @@ public class MainActivity extends Activity implements AdapterView.OnItemClickLis
 
     @Override
     public void OnStartSearch(String content) {
-        if (!content.isEmpty()) {
-            Toast.makeText(mContext, "开始搜索：" + content, Toast.LENGTH_SHORT).show();
-            searchSongs(content);
+        if (null == content || content.isEmpty()) {
+            Toast.makeText(mContext, "请输入搜索内容", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(mContext, "请输入搜索内容", Toast.LENGTH_SHORT).show();
+            Toast.makeText(mContext, "开始搜索：" + content, Toast.LENGTH_SHORT).show();
+            searchSongs(content);
         }
     }
 }

@@ -21,9 +21,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SongDetailActivity"
-            android:label="@string/title_activity_song_detail" >
-        </activity>
+            android:name=".SongDetailActivity" />
     </application>
 
 </manifest>
