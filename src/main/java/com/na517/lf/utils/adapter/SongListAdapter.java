@@ -52,9 +52,10 @@ public class SongListAdapter extends BaseListDataAdapter<BDSong> {
         }
 
         try {
-            Picasso.with(mContext).load(mList.get(position).singerPicSmall).into(item.mIvPic);
+            Picasso.with(mContext).load(mList.get(position).singerPicSmall).error(R.drawable.music_cache).into(item.mIvPic);
         } catch (Exception e) {
             Log.e("LF", "Picasso Exception:" + e.getMessage());
+            item.mIvPic.setImageResource(R.drawable.music_cache);
         }
         item.mTvSong.setText(mList.get(position).song);
         item.mTvSinger.setText("歌手：" + mList.get(position).singer);

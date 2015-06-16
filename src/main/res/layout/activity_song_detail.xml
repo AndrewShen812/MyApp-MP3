@@ -7,7 +7,7 @@
         android:id="@+id/iv_song_detail"
         android:layout_width="200dp"
         android:layout_height="200dp"
-        android:src="@drawable/ic_launcher"
+        android:src="@drawable/music_cache"
         android:layout_centerHorizontal="true"
         android:scaleType="centerCrop"/>
 

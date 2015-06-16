@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -38,6 +39,8 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
 
     private ProgressBar mPbLoad;
 
+    private long mFirstClick = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,8 +49,6 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
         mContext = this;
 
         initView();
-
-        Log.e("LF", "add from co. 2015年6月15日08:29:56");
     }
 
     private void initView() {
@@ -167,5 +168,22 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
             Toast.makeText(mContext, "开始搜索：" + content, Toast.LENGTH_SHORT).show();
             searchSongs(content);
         }
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (KeyEvent.KEYCODE_BACK == keyCode) {
+            long secongClick = System.currentTimeMillis();
+            if (secongClick - mFirstClick > 2000) {
+                mFirstClick = secongClick;
+                Toast.makeText(mContext, "再按一次退出程序", Toast.LENGTH_SHORT).show();
+            }
+            else {
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(0);
+            }
+        }
+
+        return true;
     }
 }

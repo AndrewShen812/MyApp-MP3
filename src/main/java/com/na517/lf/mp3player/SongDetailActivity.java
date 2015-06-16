@@ -68,8 +68,6 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
 
         initView();
         initData();
-        
-        Log.e("LF", "add from co");
     }
 
     @Override
@@ -78,8 +76,8 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
 
         if (null != mAudioUtils) {
             mAudioUtils.stop();
+            mAudioUtils = null;
         }
-        mAudioUtils.stop();
     }
 
     private void initView() {
@@ -163,9 +161,10 @@ public class SongDetailActivity extends Activity implements View.OnClickListener
         mSong = (BDSongDetail) getIntent().getSerializableExtra("SongDetail");
         if (null != mSong) {
             try {
-                Picasso.with(mContext).load(mSong.songPicRadio).into(mIvPic);
+                Picasso.with(mContext).load(mSong.songPicRadio).error(R.drawable.music_cache).into(mIvPic);
             } catch (Exception e) {
                 Log.e("LF", "Picasso Exception:" + e.getMessage());
+                mIvPic.setImageResource(R.drawable.music_cache);
             }
             mTvSong.setText(mSong.songName);
             mTvSinger.setText("歌手：" + mSong.artistName);
