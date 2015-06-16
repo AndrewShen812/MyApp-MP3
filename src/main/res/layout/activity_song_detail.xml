@@ -83,14 +83,15 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_song_detail_btns"
         android:layout_marginTop="@dimen/distance_10dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <ProgressBar
             android:id="@+id/pb_song_detail_download_progress"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="10dp"
             android:layout_weight="3"
-            style="?android:progressBarStyleHorizontal"/>
+            style="@style/MyProgressBar"/>
 
         <TextView
             android:id="@+id/tv_song_detail_download_progress"
@@ -98,7 +99,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="已下载0%"
-            android:visibility="invisible"/>
+            android:visibility="visible"/>
 
     </LinearLayout>
 
