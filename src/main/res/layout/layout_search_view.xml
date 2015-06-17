@@ -2,8 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="50dp"
-    android:gravity="center"
-    android:padding="@dimen/distance_5dp">
+    android:gravity="center">
 
     <RelativeLayout
         android:id="@+id/rl_search_view_content"
@@ -12,6 +11,8 @@
         android:layout_toLeftOf="@+id/iv_search_view_search"
         android:layout_marginRight="@dimen/distance_5dp"
         android:background="@drawable/bg_rect_round_corner"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:padding="@dimen/distance_5dp">
 
         <EditText

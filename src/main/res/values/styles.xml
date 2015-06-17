@@ -13,4 +13,11 @@
         <item name="android:progressDrawable">@drawable/progressbar_mini</item>
     </style>
 
+    <!-- 防止启动时黑屏 -->
+    <style name="StartupTheme" parent="android:Theme.Light">
+        <item name="android:windowBackground">@drawable/welcome_bg</item> //@null黑屏  @drawable/icon放一张启动图片
+        <item name="android:windowNoTitle">true</item> //启动界面是否显示应用名称 true不显示 false显示
+        <item name="android:windowFullscreen">true</item>
+    </style>
+
 </resources>

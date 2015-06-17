@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSON;
@@ -20,6 +21,7 @@ import com.na517.lf.model.BDSong;
 import com.na517.lf.model.BDSongDetail;
 import com.na517.lf.net.ResponseCallback;
 import com.na517.lf.net.StringRequest;
+import com.na517.lf.utils.AudioUtils;
 import com.na517.lf.utils.adapter.SongListAdapter;
 import com.na517.lf.view.SearchView;
 
@@ -41,6 +43,10 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
 
     private long mFirstClick = 0;
 
+    private TextView mTvLocalTotal;
+
+    private TextView mTvSong;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,15 +55,25 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
         mContext = this;
 
         initView();
+        initData();
     }
 
     private void initView() {
         mLvResult = (ListView) findViewById(R.id.lv_main_result);
         mSvSearch = (SearchView) findViewById(R.id.sv_main_search);
         mPbLoad = (ProgressBar) findViewById(R.id.pb_main_search_progress);
+        mTvLocalTotal = (TextView) findViewById(R.id.tv_main_local_total);
+        mTvSong = (TextView) findViewById(R.id.tv_play_pad_song);
+
+        mTvSong.setFocusable(true);
+        mTvSong.setFocusableInTouchMode(true);
 
         mSvSearch.setOnStartSearchListener(this);
         mLvResult.setOnItemClickListener(this);
+    }
+
+    private void initData() {
+        mTvLocalTotal.setText(AudioUtils.getAudioList(mContext).size() + "首");
     }
 
     private void searchSongs(String content) {
@@ -165,8 +181,10 @@ public class MainActivity extends Activity implements SearchView.OnStartSearchLi
             Toast.makeText(mContext, "请输入搜索内容", Toast.LENGTH_SHORT).show();
         }
         else {
-            Toast.makeText(mContext, "开始搜索：" + content, Toast.LENGTH_SHORT).show();
-            searchSongs(content);
+//            Toast.makeText(mContext, "开始搜索：" + content, Toast.LENGTH_SHORT).show();
+//            searchSongs(content);
+            Intent intent = new Intent(mContext, TestActivity.class);
+            startActivity(intent);
         }
     }
 

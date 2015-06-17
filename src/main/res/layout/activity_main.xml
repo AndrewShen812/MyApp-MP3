@@ -1,8 +1,7 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="@dimen/distance_10dp"
-    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <com.na517.lf.view.SearchView
@@ -10,9 +9,45 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_main_local_total"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/sv_main_search"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="本地音乐"
+            android:textColor="@color/font_major"
+            android:textSize="@dimen/font_size_20sp"/>
+
+        <TextView
+            android:id="@+id/tv_main_local_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_10dp"
+            android:drawableRight="@drawable/ic_more"
+            android:drawablePadding="@dimen/distance_10dp"
+            android:text="0首"
+            android:textColor="@color/font_minor"
+            android:textSize="@dimen/font_size_16sp"/>
+
+    </LinearLayout>
+
+    <View
+        android:id="@+id/view_main_line_above_song_list"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/ll_main_local_total"
+        android:background="@color/line_color"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_main_search_result"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/view_main_line_above_song_list"
+        android:layout_above="@+id/view_main_line_above_play_pad">
 
         <ListView
             android:id="@+id/lv_main_result"
@@ -29,4 +64,91 @@
 
     </RelativeLayout>
 
-</LinearLayout>
+    <View
+        android:id="@+id/view_main_line_above_play_pad"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_above="@+id/ll_main_play_pad"
+        android:background="@color/line_color"/>
+
+    <LinearLayout
+        android:id="@+id/ll_main_play_pad"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="@dimen/distance_60dp"
+            android:layout_height="@dimen/distance_60dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/music_cache"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/distance_5dp"
+            android:orientation="vertical">
+
+            <SeekBar
+                android:id="@+id/sb_play_pad_play"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:id="@+id/tv_play_pad_song"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="marquee"
+                android:singleLine="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:layout_below="@+id/sb_play_pad_play"
+                android:layout_toLeftOf="@+id/iv_play_pad_play"
+                android:text="歌名---歌名歌名歌名歌名歌名歌名歌名歌名歌名歌名歌名歌名"
+                android:textColor="@color/font_major"/>
+
+            <TextView
+                android:id="@+id/tv_play_pad_sing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:ellipsize="marquee"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:layout_below="@+id/tv_play_pad_song"
+                android:layout_toLeftOf="@+id/iv_play_pad_play"
+                android:text="歌手名"
+                android:textColor="@color/font_major" />
+
+            <ImageView
+                android:id="@+id/iv_play_pad_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sb_play_pad_play"
+                android:layout_toLeftOf="@+id/iv_play_pad_next"
+                android:layout_marginRight="@dimen/distance_10dp"
+                android:src="@drawable/play"/>
+
+            <ImageView
+                android:id="@+id/iv_play_pad_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sb_play_pad_play"
+                android:layout_toLeftOf="@+id/iv_play_pad_song_list"
+                android:layout_marginRight="@dimen/distance_10dp"
+                android:src="@drawable/next"/>
+
+            <ImageView
+                android:id="@+id/iv_play_pad_song_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/sb_play_pad_play"
+                android:src="@drawable/ic_song_list"/>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
